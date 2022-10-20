@@ -1,0 +1,254 @@
+
+API for user register - {URL}/api/register
+API method - [POST]
+Header - [Content-Type:'application/json', Accept:'application/json']
+form data - {
+                "email":"test@email.com",
+                "password":"21345",
+                "password_confirmation":"21345",
+                "phone":"2536452156"
+            }
+success response - {
+                        "message": "registered successfully",
+                        "data": {
+                            "email": "test@email.com",
+                            "phone": "2536452156",
+                            "updated_at": "2022-10-20T06:53:58.000000Z",
+                            "created_at": "2022-10-20T06:53:58.000000Z",
+                            "id": 1
+                        },
+                        "access_token": "33|5pZLWmdNtxL0VUIsD9lKW8myykmZNpYpQLbTOnPm",
+                        "token_type": "Bearer"
+                    }
+------------------------------------------------------------------------------------------
+API for user login - {URL}/api/login
+API method - [POST]
+Header - [Content-Type:'application/json', Accept:'application/json']
+form data - {
+                "email":"test@email.com",
+                "password":"21345",
+            }
+success response - {
+                        "message": "logged successfully",
+                        "data": {
+                            "id": 1,
+                            "first_name": "",
+                            "last_name": "",
+                            "email": "test@email.com",
+                            "phone": "2536452156",
+                            "role": "",
+                            "updated_at": "2022-10-20T06:53:58.000000Z",
+                            "created_at": "2022-10-20T06:53:58.000000Z"
+                        },
+                        "access_token": "35|AW1XwiLkZUColQrjQIUWZs7pZB4HQvE575kABM5l",
+                        "token_type": "Bearer"
+                    }
+------------------------------------------------------------------------------------------
+API for user profile update - {URL}/api/update-profile
+API method - [PUT]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+form data - {
+                "first_name":"deekshith",
+                "last_name":"update",
+                "role":"writer"
+            }
+success response - {
+                        "message": "profile updated",
+                        "data": {
+                            "id": 1,
+                            "first_name": "deekshith",
+                            "last_name": "update",
+                            "email": "test@email.com",
+                            "phone": "2536452156",
+                            "role": "writer",
+                            "created_at": "2022-10-20T06:53:58.000000Z",
+                            "updated_at": "2022-10-20T12:45:09.000000Z"
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for get profile detail - {URL}/api/profile-detail
+API method - [GET]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+success response - {
+                        "message": "profile detail",
+                        "data": {
+                            "first_name": "deekshith",
+                            "last_name": "update",
+                            "role": "writer"
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for create article - {URL}/api/create-article
+API method - [POST]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+form data - {
+                "title":"article title",
+                "post":"article body article body article body "
+            }
+success response - {
+                        "message": "post saved successfully",
+                        "data": {
+                            "title": "article title",
+                            "post": "article body article body article body",
+                            "user_id": 1,
+                            "updated_at": "2022-10-20T12:48:10.000000Z",
+                            "created_at": "2022-10-20T12:48:10.000000Z",
+                            "id": 1
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for update article - {URL}/api/update-article/{articleId}
+API method - [PUT]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+form data - {
+                "title":"article title updated",
+                "post":"article body article body article body updated"
+            }
+success response - {
+                        "message": "post updated successfully",
+                        "data": {
+                            "id": 1,
+                            "user_id": 1,
+                            "title": "article title updated",
+                            "post": "article body article body article body updated",
+                            "created_at": "2022-10-19T16:59:54.000000Z",
+                            "updated_at": "2022-10-20T12:50:07.000000Z"
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for add comment to article - {URL}/api/add-comment
+API method - [POST]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+form data - {
+                "post_id":"8",
+                "comment":"Comment to article Comment to article Comment to article Comment to article"
+            }
+success response - {
+                        "message": "comment added successfully",
+                        "data": {
+                            "user_id": 1,
+                            "article_id": "1",
+                            "comment": "Comment to article Comment to article Comment to article Comment to article",
+                            "updated_at": "2022-10-20T12:52:21.000000Z",
+                            "created_at": "2022-10-20T12:52:21.000000Z",
+                            "id": 1
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for get article list - {URL}/api/list-article
+API method - [GET]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+success response - {
+                        "message": "post list",
+                        "data": [
+                            {
+                                "id": 2,
+                                "user_id": 2,
+                                "title": "deekshith second article",
+                                "post": "this is my second post this is my second post this is my first post",
+                                "created_at": "2022-10-19T16:56:54.000000Z",
+                                "updated_at": "2022-10-19T16:56:54.000000Z",
+                                "comments": [
+                                    {
+                                        "id": 1,
+                                        "user_id": 1,
+                                        "article_id": 2,
+                                        "comment": "comment comment comment comment comment comment comment",
+                                        "created_at": "2022-10-19T17:17:09.000000Z",
+                                        "updated_at": "2022-10-19T17:17:09.000000Z"
+                                    },
+                                    {
+                                        "id": 4,
+                                        "user_id": 1,
+                                        "article_id": 2,
+                                        "comment": "comment comment c5 5 5 55omment comment comment comment comment",
+                                        "created_at": "2022-10-19T17:17:32.000000Z",
+                                        "updated_at": "2022-10-19T17:17:32.000000Z"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 3,
+                                "user_id": 2,
+                                "title": "article title updated",
+                                "post": "article body article body article body updated",
+                                "created_at": "2022-10-19T16:59:54.000000Z",
+                                "updated_at": "2022-10-20T12:50:07.000000Z",
+                                "comments": [
+                                    {
+                                        "id": 2,
+                                        "user_id": 1,
+                                        "article_id": 3,
+                                        "comment": "comment comment comment comment comment comment comment",
+                                        "created_at": "2022-10-19T17:17:19.000000Z",
+                                        "updated_at": "2022-10-19T17:17:19.000000Z"
+                                    },
+                                    {
+                                        "id": 3,
+                                        "user_id": 1,
+                                        "article_id": 3,
+                                        "comment": "comment comment c5 5 5 55omment comment comment comment comment",
+                                        "created_at": "2022-10-19T17:17:28.000000Z",
+                                        "updated_at": "2022-10-19T17:17:28.000000Z"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "user_id": 2,
+                                "title": "deekshith 13 article",
+                                "post": "this is my1 3 post this is my 13 post this is my first post",
+                                "created_at": "2022-10-19T17:00:03.000000Z",
+                                "updated_at": "2022-10-19T17:00:03.000000Z",
+                                "comments": []
+                            }
+                        ]
+                    }
+------------------------------------------------------------------------------------------
+API for get single article detail - {URL}/api/single-article/{articleId}
+API method - [GET]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+success response - {
+                        "message": "post",
+                        "data": {
+                            "id": 3,
+                            "user_id": 2,
+                            "title": "deekshith 3 article",
+                            "post": "this is my 3 post this is my 3 post this is my first post",
+                            "created_at": "2022-10-19T16:59:54.000000Z",
+                            "updated_at": "2022-10-19T16:59:54.000000Z",
+                            "comments": [
+                                {
+                                    "id": 2,
+                                    "user_id": 1,
+                                    "article_id": 3,
+                                    "comment": "comment comment comment comment comment comment comment",
+                                    "created_at": "2022-10-19T17:17:19.000000Z",
+                                    "updated_at": "2022-10-19T17:17:19.000000Z"
+                                },
+                                {
+                                    "id": 3,
+                                    "user_id": 1,
+                                    "article_id": 3,
+                                    "comment": "comment comment c5 5 5 55omment comment comment comment comment",
+                                    "created_at": "2022-10-19T17:17:28.000000Z",
+                                    "updated_at": "2022-10-19T17:17:28.000000Z"
+                                }
+                            ]
+                        }
+                    }
+------------------------------------------------------------------------------------------
+API for delete article - {URL}/api/delete-article/{articleId}
+API method - [DELETE]
+Header - [Content-Type:'application/json', Accept:'application/json']
+Bearer Token - Bearer {access_token}//response from register or login
+success response - {
+                        "message": "post deleted"
+                    }
